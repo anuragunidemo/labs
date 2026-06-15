@@ -44,27 +44,30 @@ Minimum prerequisites before running any lab:
 ## Run
 1. Complete prerequisites first:
    - lab guides/LAB_PREREQUISITES.md
-2. Run the startup script in the current terminal (creates `.venv`, activates it, upgrades pip, installs from `requirements.txt`):
+2. Clone the repository locally and open the lab root folder:
+   - git clone https://github.com/anuragunidemo/labs.git
+   - cd labs
+3. Run the startup script in the current terminal (creates `.venv`, activates it, upgrades pip, installs from `requirements.txt`):
    . .\startup_lab.ps1
    
    **Important:** The first run will take **5–10 minutes** to resolve and download all dependencies. This is normal and a one-time cost. Subsequent runs will be much faster using pip's cache.
    
    Watch the terminal output for progress. When you see `[Done] Lab environment is ready.`, setup is complete.
-3. If needed, activate virtual environment manually in a new terminal:
+4. If needed, activate virtual environment manually in a new terminal:
    .\.venv\Scripts\Activate.ps1
-4. Create or update your .env file:
+5. Create or update your .env file:
    - OPENAPI_BASE_URL
    - OPENAPI_API_KEY
    - OPENAPI_MODEL
-5. Run basic client example:
+6. Run basic client example:
    python 1_llmapiexample.py
-6. Run LangChain faculty lab:
+7. Run LangChain faculty lab:
    python 2_langchainlab.py
-7. Run LangGraph faculty lab (same workflow, graph-based orchestration):
+8. Run LangGraph faculty lab (same workflow, graph-based orchestration):
    python 3_langgraphlab.py
-8. Run PDF-based RAG lab:
+9. Run PDF-based RAG lab:
    python 4_raglab.py
-9. Run Microsoft Agent Framework chatbot lab:
+10. Run Microsoft Agent Framework chatbot lab:
    python 5_final_lab.py
 
 ## Files

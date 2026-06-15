@@ -51,8 +51,18 @@ Important note about credit card charges (per Microsoft documentation):
 - Create your account and verify email.
 - Sign in at: https://github.com and confirm your dashboard loads.
 
-## 7) Run the startup script (creates virtual env + installs dependencies)
-From the lab root folder, run:
+## 7) Create a local folder and clone the lab repository
+- Open PowerShell and move to a location where you keep projects.
+- Create a parent folder and enter it:
+	- `mkdir anuraguni-labs`
+	- `cd anuraguni-labs`
+- Clone the repository:
+	- `git clone https://github.com/anuragunidemo/labs.git`
+- Enter the cloned lab root folder:
+	- `cd labs`
+
+## 8) Run the startup script (creates virtual env + installs dependencies)
+From the cloned lab root folder, run:
 
 - `. .\startup_lab.ps1`
 
@@ -92,4 +102,5 @@ Tip:
 - [ ] Azure Portal opens successfully
 - [ ] Microsoft Foundry opens successfully
 - [ ] GitHub account created and accessible
+- [ ] `anuragunidemo/labs` cloned locally
 - [ ] `. .\startup_lab.ps1` completed successfully
