@@ -1,0 +1,31 @@
+Department Faculty Meeting Notes (Raw)
+Date: 2026-05-28
+Duration: 75 minutes
+
+Attendees:
+- Dr. S. Raman (HoD)
+- Prof. K. Tejaswini
+- Prof. V. Akhil
+- Prof. P. Niharika
+- TA Coordinators: 2
+
+Agenda:
+1) Internal exam analysis for Sem 1 CSE
+2) NBA/NAAC evidence collection status
+3) Mini-project rubric standardization
+4) Industry lecture series planning
+
+Discussion snippets:
+- Internal exam average for CS101 was around 56/100. Programming questions had the lowest score.
+- Need early remedial sessions from Week 5 itself, not after mid-term.
+- Rubrics vary by section; this causes student complaints.
+- For audit, CO-PO mapping sheets are inconsistent in format.
+- Need one shared template for lab observation checklist and viva marks.
+- HoD requested one-page weekly status email from each course faculty.
+- Industry lecture likely in Week 10; tentative topic: AI-assisted coding workflow.
+
+Action Items (rough):
+- Build common rubric draft by next Friday.
+- TA coordinator to collect weak-student list with attendance < 75%.
+- Faculty to share remedial plan and expected outcomes.
+- Prepare evidence folder naming convention before audit team visit.

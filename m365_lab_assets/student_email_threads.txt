@@ -1,0 +1,23 @@
+Thread 1
+From: student.group.a@anurag.edu
+Subject: Request for extra problem-solving session
+Message:
+Ma'am, many of us are finding loops and functions difficult. Could we have one extra session before Internal 2? We also need solved examples for pattern questions.
+
+Thread 2
+From: parents.forum@anurag.edu
+Subject: Concern on lab grading transparency
+Message:
+We request clarity on how practical marks are assigned. Different lab sections seem to use different standards.
+
+Thread 3
+From: cse.ta.team@anurag.edu
+Subject: TA support needed for CS101 remediation
+Message:
+We can run two weekly support slots, but we need a fixed checklist and expected outcomes per slot.
+
+Thread 4
+From: student.rep.sem1@anurag.edu
+Subject: Request for bilingual summary material
+Message:
+Some students are struggling to follow technical terms in English-only notes. Please provide short bilingual summaries for difficult topics.
