@@ -31,6 +31,16 @@ Use this guide:
 This guide is focused on a terminal-based faculty chatbot built with Microsoft Agent Framework,
 including function calling, session-backed memory, and step-by-step copy-paste instructions.
 
+## Prerequisites Summary
+Use the full checklist here first:
+- lab guides/LAB_PREREQUISITES.md
+
+Minimum prerequisites before running any lab:
+- VS Code installed
+- Python 3.10+ with pip
+- GitHub account access
+- Microsoft account, Azure Free account, and access to Azure Portal + Microsoft Foundry
+
 ## Run
 1. Complete prerequisites first:
    - lab guides/LAB_PREREQUISITES.md
@@ -40,19 +50,21 @@ including function calling, session-backed memory, and step-by-step copy-paste i
    **Important:** The first run will take **5–10 minutes** to resolve and download all dependencies. This is normal and a one-time cost. Subsequent runs will be much faster using pip's cache.
    
    Watch the terminal output for progress. When you see `[Done] Lab environment is ready.`, setup is complete.
-3. Create or update your .env file:
+3. If needed, activate virtual environment manually in a new terminal:
+   .\.venv\Scripts\Activate.ps1
+4. Create or update your .env file:
    - OPENAPI_BASE_URL
    - OPENAPI_API_KEY
    - OPENAPI_MODEL
-4. Run basic client example:
+5. Run basic client example:
    python 1_llmapiexample.py
-5. Run LangChain faculty lab:
+6. Run LangChain faculty lab:
    python 2_langchainlab.py
-6. Run LangGraph faculty lab (same workflow, graph-based orchestration):
+7. Run LangGraph faculty lab (same workflow, graph-based orchestration):
    python 3_langgraphlab.py
-7. Run PDF-based RAG lab:
+8. Run PDF-based RAG lab:
    python 4_raglab.py
-8. Run Microsoft Agent Framework chatbot lab:
+9. Run Microsoft Agent Framework chatbot lab:
    python 5_final_lab.py
 
 ## Files
