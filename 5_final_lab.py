@@ -45,8 +45,8 @@ FACULTY_MEMORY_KEY = "faculty_profile"
 #         f"subject={profile['subject']}, class_level={profile['class_level']}, "
 #         "teaching_style=not-set"
 #     )
-#
-#
+
+
 # @tool(name="suggest_classroom_activity", description="Suggest a short classroom activity for a faculty topic.")
 # def suggest_classroom_activity(topic: str) -> str:
 #     topic = topic.strip()
@@ -115,7 +115,13 @@ def _topic_keywords(topic_focus: str) -> list[str]:
     return list(dict.fromkeys(normalized_words))
 
 
-async def run_evaluation_demo(user_prompt: str, response, topic_focus: str) -> None:
+async def run_evaluation_demo(
+    user_prompt: str,
+    response,
+    topic_focus: str,
+    memory_prompt: str | None = None,
+    memory_response=None,
+) -> None:
     print("Evaluation source:")
     print(f"- Topic focus: {topic_focus}")
     print(f"- User prompt: {user_prompt}")
@@ -132,21 +138,18 @@ async def run_evaluation_demo(user_prompt: str, response, topic_focus: str) -> N
     # for topic_word in topic_words:
     #     checks.append(keyword_check(topic_word))
     #
-    # # Add a built-in tool-call evaluator to verify at least one expected tool was used.
-    # checks.append(tool_called_check("save_faculty_context", "suggest_classroom_activity", mode="any"))
-    #
     # evaluator = LocalEvaluator(*checks)
     # eval_results = await evaluate_agent(
     #     queries=user_prompt,
     #     responses=response,
     #     evaluators=evaluator,
-    #     eval_name="single-prompt-local-eval",
+    #     eval_name="single-prompt-keyword-eval",
     #     context=f"Topic focus: {topic_focus}; Prompt: {user_prompt}",
     # )
     #
     # result = eval_results[0]
     # counts = result.result_counts
-    # print("Built-in evaluator summary:")
+    # print("Keyword evaluator summary:")
     # print(f"- Passed items: {counts.get('passed', 0)}")
     # print(f"- Failed items: {counts.get('failed', 0)}")
     # print(f"- Errored items: {counts.get('errored', 0)}")
@@ -154,6 +157,39 @@ async def run_evaluation_demo(user_prompt: str, response, topic_focus: str) -> N
     # if result.items:
     #     item = result.items[0]
     #     for score in item.scores:
+    #         status = "pass" if score.passed else "fail"
+    #         reason = ""
+    #         if score.sample and isinstance(score.sample, dict):
+    #             reason = score.sample.get("reason", "")
+    #         if reason:
+    #             print(f"- {score.name}: {status} ({reason})")
+    #         else:
+    #             print(f"- {score.name}: {status}")
+    #
+    # tool_eval_queries = user_prompt
+    # tool_eval_responses = response
+    # if memory_prompt is not None and memory_response is not None:
+    #     tool_eval_queries = [memory_prompt, user_prompt]
+    #     tool_eval_responses = [memory_response, response]
+    #
+    # tool_eval = await evaluate_agent(
+    #     queries=tool_eval_queries,
+    #     responses=tool_eval_responses,
+    #     evaluators=LocalEvaluator(tool_called_check("save_faculty_context", "suggest_classroom_activity", mode="any")),
+    #     eval_name="persistent-tool-call-eval",
+    #     context=f"Topic focus: {topic_focus}; includes memory-save run before user prompt.",
+    # )
+    #
+    # tool_result = tool_eval[0]
+    # tool_counts = tool_result.result_counts
+    # print("Tool-call evaluator summary (persistent runs):")
+    # print(f"- Passed items: {tool_counts.get('passed', 0)}")
+    # print(f"- Failed items: {tool_counts.get('failed', 0)}")
+    # print(f"- Errored items: {tool_counts.get('errored', 0)}")
+    #
+    # if tool_result.items:
+    #     tool_item = tool_result.items[0]
+    #     for score in tool_item.scores:
     #         status = "pass" if score.passed else "fail"
     #         reason = ""
     #         if score.sample and isinstance(score.sample, dict):
@@ -181,12 +217,13 @@ async def run_chatbot() -> None:
     # TODO 3: Memory task for students.
     # Uncomment the full block below to save faculty context into session memory.
     # This should call the save_faculty_context tool and persist class metadata.
-    # await agent.run(
-    #     (
-    #         # TODO 3: This prompt writes memory using the save_faculty_context tool.
-    #         "Save faculty context with "
-    #         f"subject=DBMS ({topic_focus}), class_level={class_level}."
-    #     ),
+    # memory_prompt = (
+    #     # TODO 3: This prompt writes memory using the save_faculty_context tool.
+    #     "Save faculty context with "
+    #     f"subject=DBMS ({topic_focus}), class_level={class_level}."
+    # )
+    # memory_response = await agent.run(
+    #     memory_prompt,
     #     session=session,
     # )
 
@@ -204,7 +241,7 @@ async def run_chatbot() -> None:
 
     # TODO 4: Uncomment the next two lines to run built-in evaluators.
     # print("Running evaluation on the same response...")
-    # await run_evaluation_demo(user_message, response, topic_focus)
+    # await run_evaluation_demo(user_message, response, topic_focus, memory_prompt, memory_response)
 
 
 def main() -> None:
